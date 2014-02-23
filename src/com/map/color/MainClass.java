@@ -11,7 +11,9 @@ public class MainClass {
    * @param args
    */
   public static void main(String[] args) {
-    (new MapModel()).parseFile();
+    MapModel harness = new MapModel();
+    harness.parseFile();
+    harness.buildUserExpMap();
   }
 
 }
