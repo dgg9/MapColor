@@ -14,6 +14,10 @@ import com.map.color.MapController.Range;
 
 public class MapModel {
 
+  /**
+   * Return back a constructed RangeBalancedTree
+   * @return
+   */
   public Map<Range<Inet4Address>, Region> parseFile() {
     Map<Range<Inet4Address>, Region> rangeToRegion = new LinkedHashMap<MapController.Range<Inet4Address>, Region>();
     Scanner sc = null;
