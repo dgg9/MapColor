@@ -52,7 +52,7 @@ public class TestMapRangeToUserExperience {
     Range<Long> next;
     while (itr.hasNext()) {
       next = itr.next();
-      assertTrue(curr.until.compareTo(next.from) < 0);
+      assertTrue(curr.until.compareTo(next.from) <= 0);
       curr = next;
     }
   }

@@ -1,6 +1,8 @@
 package com.rangesearch.tree;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.net.UnknownHostException;
 import java.util.Iterator;
@@ -70,9 +72,21 @@ public class TestMapRangeToRegion {
   }
 
   @Test
-  public void testQueryFail() throws UnknownHostException {
+  public void testQueryFail(){
     rangeMap = new MapRangeToRegion();
-    Region region = rangeMap.query(new InetAddressDecorator("300.400.500.600"));
+    Region region = null;
+    try {
+      region = rangeMap.query(new InetAddressDecorator("300.400.500.600"));
+    } catch (Exception e) {
+      assertTrue(true);
+    }
+  }
+  
+  @Test
+  public void testQueryWithNonValidIP() throws UnknownHostException{
+    rangeMap = new MapRangeToRegion();
+    Region region = null;
+    region = rangeMap.query(new InetAddressDecorator("255.255.255.255"));
     assertEquals(region.getName(), "UNKOWN REGION");
   }
 
