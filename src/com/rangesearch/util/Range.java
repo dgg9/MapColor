@@ -2,6 +2,10 @@ package com.rangesearch.util;
 
 /**
  * Represents a range of some ordered type.
+ * 
+ * @author gayash
+ *
+ * @param <T>
  */
 public class Range<T extends Comparable<T>> {
 	public final T from;

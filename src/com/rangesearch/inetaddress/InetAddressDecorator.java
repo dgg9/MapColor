@@ -3,12 +3,12 @@ package com.rangesearch.inetaddress;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-/*
+/**
  * Decorator class to perform manipulations on ipv4 address to perform comparisons
  * 
- * Reference: http://www.hawkee.com/snippet/9731/
+ * @author Reference: http://www.hawkee.com/snippet/9731/
+ *
  */
-
 public class InetAddressDecorator implements Comparable<InetAddressDecorator>{
 	
 	private InetAddress iNetAddress;
@@ -104,7 +104,7 @@ public class InetAddressDecorator implements Comparable<InetAddressDecorator>{
 		return this.iNetValue;
 	}
 	
-	public String getHost(){
+	public String toString(){
 		return this.iNetAddress.getHostAddress();
 	}
 

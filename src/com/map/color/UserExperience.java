@@ -1,5 +1,5 @@
 package com.map.color;
 
-enum UserExperience {
+public enum UserExperience {
   NORMAL, SLOW, VERY_SLOW, STALLED
 }

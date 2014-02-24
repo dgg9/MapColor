@@ -1,20 +1,20 @@
 package com.map.color;
 
 import java.net.UnknownHostException;
-import java.util.Map;
 
 import com.rangesearch.exception.ExceptionMessages;
 import com.rangesearch.inetaddress.InetAddressDecorator;
-import com.rangesearch.tree.InetAddressTree;
-import com.rangesearch.tree.RangeTree;
+import com.rangesearch.tree.BuildMapImpl;
+import com.rangesearch.tree.MapRangeToRegion;
+import com.rangesearch.tree.MapRangeToUserExperience;
 import com.rangesearch.util.Region;
 
 /**
  * A controller which decides which regions of the map should light up when.
  */
 public class MapController {
-  RangeTree<InetAddressDecorator> rangeTree;
-  //RangeTree<UserExperience> userExp;
+  BuildMapImpl<InetAddressDecorator, Region> rangeTree;
+  BuildMapImpl<Long,UserExperience> userExp;
   MapView mapView;
   
   /**
@@ -31,8 +31,8 @@ public class MapController {
    *          the MapView which needs to be updated
    */
   public MapController(MapView view) {
-    this.rangeTree = new InetAddressTree();
-    //Create user experience tree
+    this.rangeTree = new MapRangeToRegion();
+    this.userExp = new MapRangeToUserExperience();
     this.mapView = view;
   }
 
@@ -49,8 +49,11 @@ public class MapController {
   public void hit(String ipAddress, long responseTime) {
     try {
       Region region = rangeTree.query(new InetAddressDecorator(ipAddress));
-      this.mapView.lightUp(region, UserExperience.NORMAL);
-      
+      UserExperience color = userExp.query(responseTime);
+      this.mapView.lightUp(region, color);
+      rangeTree.printRangeMap();
+      System.out.println((new InetAddressDecorator("4.238.227.67")).getLong());
+      System.out.println((new InetAddressDecorator("49.80.66.249")).getLong());
     } catch (UnknownHostException e) {
       System.out.println(ExceptionMessages.INVALID_ADDRESS_TYPE);
       e.printStackTrace();

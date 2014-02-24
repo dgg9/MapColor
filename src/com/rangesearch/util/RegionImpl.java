@@ -2,7 +2,7 @@ package com.rangesearch.util;
 
 import java.util.List;
 
-import com.rangesearch.tree.RangeTree;
+import com.rangesearch.tree.BuildMapImpl;
 
 public class RegionImpl implements Region {
 
@@ -12,7 +12,7 @@ public class RegionImpl implements Region {
     region = new StringBuilder();
     for (String subRegion : subRegions) {
       if (region.length() > 0) {
-        region.append(RangeTree.INPUT_VALUE_SEPARATOR + subRegion);
+        region.append(BuildMapImpl.INPUT_VALUE_SEPARATOR + subRegion);
       } else {
         region.append(subRegion);
       }
@@ -25,6 +25,11 @@ public class RegionImpl implements Region {
 
   @Override
   public String getName() {
+    return this.region.toString();
+  }
+  
+  @Override
+  public String toString() {
     return this.region.toString();
   }
 
