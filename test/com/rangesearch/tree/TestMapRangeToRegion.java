@@ -74,9 +74,8 @@ public class TestMapRangeToRegion {
   @Test
   public void testQueryFail(){
     rangeMap = new MapRangeToRegion();
-    Region region = null;
     try {
-      region = rangeMap.query(new InetAddressDecorator("300.400.500.600"));
+      rangeMap.query(new InetAddressDecorator("300.400.500.600"));
     } catch (Exception e) {
       assertTrue(true);
     }

@@ -1,7 +1,7 @@
 package com.map.color;
 
 /**
- * This can become a Jerseys 
+ * This can be exposed as a RestEndPoint.
  * @author gayash
  *
  */
@@ -9,6 +9,7 @@ public class MainClass {
 
   public static void main(String[] args) {
     MapController appDynamicsUsage = new MapController(new MapViewImpl());
-      appDynamicsUsage.hit("45.32.190.27", 8000);
+    // Dummy ip.   
+    appDynamicsUsage.hit("45.32.190.27", 8000);
     }
 }

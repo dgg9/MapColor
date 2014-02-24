@@ -51,9 +51,7 @@ public class MapController {
       Region region = rangeTree.query(new InetAddressDecorator(ipAddress));
       UserExperience color = userExp.query(responseTime);
       this.mapView.lightUp(region, color);
-      rangeTree.printRangeMap();
-      System.out.println((new InetAddressDecorator("4.238.227.67")).getLong());
-      System.out.println((new InetAddressDecorator("49.80.66.249")).getLong());
+      //rangeTree.printRangeMap();
     } catch (UnknownHostException e) {
       System.out.println(ExceptionMessages.INVALID_ADDRESS_TYPE);
       e.printStackTrace();

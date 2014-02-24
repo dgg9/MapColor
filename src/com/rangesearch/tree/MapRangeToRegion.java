@@ -22,7 +22,7 @@ import com.rangesearch.util.RegionImpl;
 public class MapRangeToRegion extends
     BuildMapImpl<InetAddressDecorator, Region> {
 
-  private static String INPUT_FILE_PATH = "IP_25";
+  private static String INPUT_FILE_PATH = "IP_10000";
 
   LinkedHashMap<Range<InetAddressDecorator>, Region> rangeList = new LinkedHashMap<Range<InetAddressDecorator>, Region>();
   List<Range<InetAddressDecorator>> arrKeys = null;

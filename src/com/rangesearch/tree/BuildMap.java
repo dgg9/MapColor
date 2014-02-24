@@ -24,5 +24,5 @@ public interface BuildMap<K extends Comparable<K>, V> {
    *          the search key
    * @return ; null if not present
    */
-  public V query(K ip);
+  public V query(K ip) ;
 }

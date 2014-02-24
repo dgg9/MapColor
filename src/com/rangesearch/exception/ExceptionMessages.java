@@ -17,4 +17,5 @@ public final class ExceptionMessages {
   public static final String DUPLICATE_ENTRY = "Ensure that each value of [data] has a unique range [low],[high]";
   public static final String INVALID_ADDRESS_TYPE = "Error retrieving IP address from given input: ";
   public static final String INVALID_IP_INPUT = "Given IP is not found in the IP address list";
+  public static final String INVALID_RESPONSE_TIME_INPUT = "Given response time is not valid";
 };
