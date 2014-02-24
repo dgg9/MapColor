@@ -2,6 +2,8 @@ package com.map.color;
 
 import java.util.Date;
 
+import com.rangesearch.util.Region;
+
 class MapViewImpl implements MapView {
 
   @Override
@@ -9,5 +11,4 @@ class MapViewImpl implements MapView {
     System.out.println(new Date() + ": show " + region.getName() + " in color "
         + "for " + userExperience);
   }
-
 }

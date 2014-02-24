@@ -1,43 +1,22 @@
 package com.map.color;
 
-import java.net.Inet4Address;
+import java.net.UnknownHostException;
 import java.util.Map;
+
+import com.rangesearch.exception.ExceptionMessages;
+import com.rangesearch.inetaddress.InetAddressDecorator;
+import com.rangesearch.tree.InetAddressTree;
+import com.rangesearch.tree.RangeTree;
+import com.rangesearch.util.Region;
 
 /**
  * A controller which decides which regions of the map should light up when.
  */
 public class MapController {
-  /**
-   * Concurrent data structure which has a map between range objects and Regions
-   * This data structure will get updated by multiple agents via the
-   * {@link #hit(String, long) hit}
-   */
-  Map<Range<Inet4Address>, Region> regions;
-
-  /**
-   * Maps UserExperiences to different time durations. This is the rules based
-   * on which we provide results.
-   */
-  Map<Range<Long>, UserExperience> userExperiences;
-
-  /**
-   * Reference to a MapView object providing the {@link com.map.color.MapView}
-   */
-  MapView view;
-
-  /**
-   * Represents a range of some ordered type.
-   */
-  public static class Range<T> {
-    public final T from;
-    public final T until;
-
-    public Range(T from, T until) {
-      this.from = from;
-      this.until = until;
-    }
-  }
-
+  RangeTree<InetAddressDecorator> rangeTree;
+  //RangeTree<UserExperience> userExp;
+  MapView mapView;
+  
   /**
    * @param regions
    *          mapping of IP address ranges to regions on the map. The ranges
@@ -51,11 +30,10 @@ public class MapController {
    * @param view
    *          the MapView which needs to be updated
    */
-  public MapController(RangeBalancedTree tree, 
-                       Map<Range<Long>, UserExperience> userExperiences, 
-                       MapView view) 
-  {
-    throw new UnsupportedOperationException("Needs to be implemented");
+  public MapController(MapView view) {
+    this.rangeTree = new InetAddressTree();
+    //Create user experience tree
+    this.mapView = view;
   }
 
   /**
@@ -66,8 +44,17 @@ public class MapController {
    * @param responseTime
    *          the response time, in milli second, experienced by the user with
    *          the given IP address
+   * @throws UnknownHostException
    */
   public void hit(String ipAddress, long responseTime) {
-    throw new UnsupportedOperationException("Needs to be implemented");
+    try {
+      Region region = rangeTree.query(new InetAddressDecorator(ipAddress));
+      this.mapView.lightUp(region, UserExperience.NORMAL);
+      
+    } catch (UnknownHostException e) {
+      System.out.println(ExceptionMessages.INVALID_ADDRESS_TYPE);
+      e.printStackTrace();
+    }
+    
   }
 }

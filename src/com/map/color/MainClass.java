@@ -1,6 +1,7 @@
 package com.map.color;
 
 
+
 public class MainClass {
 
   /**
@@ -11,9 +12,8 @@ public class MainClass {
    * @param args
    */
   public static void main(String[] args) {
-    MapModel harness = new MapModel();
-    harness.parseFile();
-    harness.buildUserExpMap();
+    MapController appDynamicsUsage = new MapController(new MapViewImpl());
+    //for(int i = 0; i < 255; i++)
+      appDynamicsUsage.hit("10.20.10.21", 10000);
   }
-
 }

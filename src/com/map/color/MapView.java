@@ -1,5 +1,7 @@
 package com.map.color;
 
+import com.rangesearch.util.Region;
+
 /**
  * A user interface for the map of the world. A map contains many regions.
  */
