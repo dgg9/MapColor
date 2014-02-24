@@ -60,7 +60,13 @@ public class TestMapRangeToUserExperience {
 
   @Test
   public void testQuery() throws Exception {
-    UserExperience userExperience = rangeMap.query(Math.abs((new Random()).nextLong()));
+    Random rand = new Random();
+    long responseTime = rand.nextLong();
+    while(responseTime < 0) {
+      // Come out when I have a positive number
+      responseTime = rand.nextLong();
+    }
+    UserExperience userExperience = rangeMap.query(responseTime);
     assertNotNull(userExperience);
   }
 

@@ -46,8 +46,8 @@ public class MapRangeToUserExperience extends BuildMapImpl<Long, UserExperience>
     this.rangeList = userExperiences;
   }
 
-  public UserExperience query(Long ip) {
-    UserExperience userExperience = query(ip, this.rangeList, this.arrKeys);
+  public UserExperience query(Long responseTime) {
+    UserExperience userExperience = query(responseTime, this.rangeList, this.arrKeys);
     if(userExperience == null) {
       System.out.println(ExceptionMessages.INVALID_RESPONSE_TIME_INPUT);
     }
